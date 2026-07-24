@@ -46,6 +46,9 @@
             margin-top: 20px;
             color: #333;
         }
+        .erro {
+            color: #dc3545;
+        }
     </style>
 </head>
 <body>
@@ -60,26 +63,43 @@
 
     <script>
         function cumprimentar() {
-            // Pega o nome digitado mantendo o formato original
             const nomeOriginal = document.getElementById('inputNome').value.trim();
-            
-            // Cria a versão em minúsculo só para verificar
-            const nomeChecagem = nomeOriginal.toLowerCase();
-            
             const elementoMensagem = document.getElementById('mensagem');
 
+            // Limpa estilos de erro anteriores
+            elementoMensagem.classList.remove('erro');
+
+            // 1. Validação: Campo vazio
             if (!nomeOriginal) {
+                elementoMensagem.classList.add('erro');
                 elementoMensagem.innerText = "Digite algum nome!";
                 return;
             }
 
-            // Lista de nomes para zoar
-            const listaNegra = ['renan'];
+            // 2. Validação: Números
+            const temNumero = /\d/.test(nomeOriginal);
+            if (temNumero) {
+                elementoMensagem.classList.add('erro');
+                elementoMensagem.innerText = "Erro: Digite apenas letras, sem números!";
+                return;
+            }
+
+            // 3. Validação: Caracteres especiais (permite letras com acento e espaços)
+            const temCaractereEspecial = /[^a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]/.test(nomeOriginal);
+            if (temCaractereEspecial) {
+                elementoMensagem.classList.add('erro');
+                elementoMensagem.innerText = "Erro: Não utilize caracteres especiais!";
+                return;
+            }
+
+            // 4. Processamento do nome
+            const nomeChecagem = nomeOriginal.toLowerCase();
+            const listaNegra = ['cleber', 'renan'];
 
             if (listaNegra.includes(nomeChecagem)) {
-                elementoMensagem.innerText = `Olá, ${nomeOriginal}, você abandonou a gente, estamos muito decepcionados com você.`;
+                elementoMensagem.innerText = `Vai se fuder, ${nomeOriginal}!`;
             } else {
-                elementoMensagem.innerText = `Olá, ${nomeOriginal}, você é fera!`;
+                elementoMensagem.innerText = `Olá, ${nomeOriginal}!`;
             }
         }
     </script>
