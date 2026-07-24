@@ -84,7 +84,7 @@
                 return;
             }
 
-            // 3. Validação: Caracteres especiais (permite letras com acento e espaços)
+            // 3. Validação: Caracteres especiais
             const temCaractereEspecial = /[^a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]/.test(nomeOriginal);
             if (temCaractereEspecial) {
                 elementoMensagem.classList.add('erro');
@@ -94,9 +94,9 @@
 
             // 4. Processamento do nome
             const nomeChecagem = nomeOriginal.toLowerCase();
-            const listaNegra = ['cleber', 'renan'];
+            const listaDeAlvos = ['cleber', 'renan'];
 
-            if (listaNegra.includes(nomeChecagem)) {
+            if (listaDeAlvos.includes(nomeChecagem)) {
                 elementoMensagem.innerText = `Vai se fuder, ${nomeOriginal}!`;
             } else {
                 elementoMensagem.innerText = `Olá, ${nomeOriginal}!`;
