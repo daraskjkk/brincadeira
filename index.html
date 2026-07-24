@@ -92,15 +92,8 @@
                 return;
             }
 
-            // 4. Processamento do nome
-            const nomeChecagem = nomeOriginal.toLowerCase();
-            const listaDeAlvos = ['cleber', 'renan'];
-
-            if (listaDeAlvos.includes(nomeChecagem)) {
-                elementoMensagem.innerText = `Vai se fuder, ${nomeOriginal}!`;
-            } else {
-                elementoMensagem.innerText = `Olá, ${nomeOriginal}!`;
-            }
+            // Exibe diretamente a mensagem de boas-vindas
+            elementoMensagem.innerText = `Olá, ${nomeOriginal}!`;
         }
     </script>
 
