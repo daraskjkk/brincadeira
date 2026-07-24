@@ -55,14 +55,21 @@
 
     <div class="card">
         <h3>Digite seu nome</h3>
-        <input type="text" id="inputNome" placeholder="Seu nome aqui...">
-        <button onclick="cumprimentar()">Entrar</button>
+        
+        <!-- O evento no form permite acionar com 'Enter' ou 'Clique' -->
+        <form onsubmit="cumprimentar(event)">
+            <input type="text" id="inputNome" placeholder="Seu nome aqui...">
+            <button type="submit">Entrar</button>
+        </form>
         
         <h2 id="mensagem"></h2>
     </div>
 
     <script>
-        function cumprimentar() {
+        function cumprimentar(event) {
+            // Impede a página de recarregar ao pressionar Enter
+            event.preventDefault();
+
             const nomeOriginal = document.getElementById('inputNome').value.trim();
             const elementoMensagem = document.getElementById('mensagem');
 
@@ -92,7 +99,7 @@
                 return;
             }
 
-            // Exibe diretamente a mensagem de boas-vindas
+            // Exibe a mensagem de boas-vindas mantendo a grafia original do usuário
             elementoMensagem.innerText = `Olá, ${nomeOriginal}!`;
         }
     </script>
