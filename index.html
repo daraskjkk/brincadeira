@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boas-Vindas!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h3>Digite seu nome</h3>
+        <input type="text" id="inputNome" placeholder="Seu nome aqui...">
+        <button onclick="cumprimentar()">Entrar</button>
+        
+        <h2 id="mensagem"></h2>
+    </div>
+
+    <script>
+        function cumprimentar() {
+            // Pega o nome digitado mantendo o formato original
+            const nomeOriginal = document.getElementById('inputNome').value.trim();
+            
+            // Cria a versão em minúsculo só para verificar
+            const nomeChecagem = nomeOriginal.toLowerCase();
+            
+            const elementoMensagem = document.getElementById('mensagem');
+
+            if (!nomeOriginal) {
+                elementoMensagem.innerText = "Digite algum nome!";
+                return;
+            }
+
+            // Lista de nomes para zoar
+            const listaNegra = ['renan'];
+
+            if (listaNegra.includes(nomeChecagem)) {
+                elementoMensagem.innerText = `Olá, ${nomeOriginal}, você abandonou a gente, estamos muito decepcionados com você.`;
+            } else {
+                elementoMensagem.innerText = `Olá, ${nomeOriginal}, você é fera!`;
+            }
+        }
+    </script>
+
+</body>
+</html>
